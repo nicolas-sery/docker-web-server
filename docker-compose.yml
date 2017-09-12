@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  apache:
+    container_name: docker-apache
+    image: debian-web-server:latest
+    restart: on-failure
+    hostname: docker-apache
+    ports:
+      - "80:80"
+        #command: ["bash /tmp/scripts/start-services.sh", "/usr/bin/tail -f /dev/null"]
+        #command: /usr/bin/tail -f /dev/null
+    command: bash /tmp/scripts/execute-scripts.sh
+    #    networks:
+    #      vpcbr:
+    #        ipv4_address: 172.16.0.10
+    #networks:
+    #    vpcbr:
+    #      driver: bridge
+    #      ipam:
+    #      config:
+    #        - subnet: 172.16.0.0/16
+    #          gateway: 172.16.0.254
